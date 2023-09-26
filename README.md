@@ -24,9 +24,15 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 <h2>Actions and Observations</h2>
 
 
-First we will Verify our two virtual machines are set up on the same network.  VM1 will run Linux Ubuntu 2022 and VM2 will run Windows 10. 
-As highlighted the two machines are on the same Vnet.  Wireshark will be downloaded from https://www.wireshark.org/ and used to inspect packet traffic between the two machines.  
-Each machine will have its own network security group (Fireawall resource) and we will be working with each of these with command line tools.
+
+**Network Traffic**
+
+
+
+
+First we will Verify our two virtual machines are set up on the same network.  VM1 will run Linux Ubuntu 2022 and VM2 will run Windows 10. As highlighted the two machines are on the same Vnet. 
+Wireshark will be downloaded from https://www.wireshark.org/ and used to inspect packet traffic between the two machines.  Each machine will have its own network security group (Fireawall resource) and we will 
+be working with each of these with command line tools.
 
 
 ![image](https://github.com/Forevermorewon/-azure-network-protocols/assets/145600604/18eea789-2509-4abb-bac4-268e97da84de)
@@ -39,11 +45,11 @@ Each machine will have its own network security group (Fireawall resource) and w
 
 
 
-**Network Traffic**
 
 
-Once Wire shark is actived we can ping VM1 from powershell using the ping command and the private IP address of VM1.
-We will filter WireShark for Ethernet traffic using ICMP protocol.  
+
+        Once Wire shark is actived we can ping VM1 from powershell using the ping command and the private IP address of VM1.
+        We will filter WireShark for Ethernet traffic using ICMP protocol.  
 
 
 ![image](https://github.com/Forevermorewon/-azure-network-protocols/assets/145600604/a8d596c3-5dd9-4bdd-a817-7a27c22436a7)
@@ -53,7 +59,7 @@ We will filter WireShark for Ethernet traffic using ICMP protocol.
 
 
 
-We can observe the random packet data sent in the ping.
+        We can observe the random packet data sent in the ping.
 
 
 ![image](https://github.com/Forevermorewon/-azure-network-protocols/assets/145600604/bdb338d9-4589-42db-9854-7b29b077f287)
@@ -66,7 +72,7 @@ We can observe the random packet data sent in the ping.
 
 **Firewall and ICMP Protocol**
 
-Next we will use the powershell command ping -t to establish a continuous ping with VM1, while we disable firewall traffic from ICMP protocol.
+        Next we will use the powershell command ping -t to establish a continuous ping with VM1, while we disable firewall traffic from ICMP protocol.
 
 
 ![image](https://github.com/Forevermorewon/-azure-network-protocols/assets/145600604/e3b1c00b-80ee-4115-a569-603d85d55802)
@@ -82,8 +88,8 @@ Next we will use the powershell command ping -t to establish a continuous ping w
 
 
 
-Create a new rule to Deny ICMP protocol traffic, but navigating to Azure.  Select the Network security group for machine 2.  Go to inbound 
-security rules.  Choose +add and create new rule.  Note that the Priority number will determin the order in which actions are taken.
+        Create a new rule to Deny ICMP protocol traffic, but navigating to Azure.  Select the Network security group for machine 2.  Go to inbound 
+        security rules.  Choose +add and create new rule.  Note that the Priority number will determin the order in which actions are taken.
 
 
 ![image](https://github.com/Forevermorewon/-azure-network-protocols/assets/145600604/3e1b0d5a-646c-469c-8cd6-76bb54624b0e)
@@ -122,7 +128,7 @@ security rules.  Choose +add and create new rule.  Note that the Priority number
 
 
 
-The ping begains to time out
+        The ping begains to time out
 
 ![image](https://github.com/Forevermorewon/-azure-network-protocols/assets/145600604/c2d74d2e-34ff-4a6e-b68e-62a5275fa76b)
 
@@ -134,7 +140,7 @@ The ping begains to time out
 
 
 
-Next we will allow ICMP traffic
+        Next we will allow ICMP traffic
 
 ![image](https://github.com/Forevermorewon/-azure-network-protocols/assets/145600604/f207082e-ce6e-408f-85d4-347da67d2b71)
 
@@ -145,7 +151,7 @@ Next we will allow ICMP traffic
 
 
 
-You will notice the trafiic begain on the command line of powershell
+        You will notice the trafiic begain on the command line of powershell
 
 ![image](https://github.com/Forevermorewon/-azure-network-protocols/assets/145600604/10972279-c722-43b5-9530-8ebb796558e4)
 
@@ -157,7 +163,7 @@ You will notice the trafiic begain on the command line of powershell
 
 
 
-WireShark also confirms the pings and traffic
+        WireShark also confirms the pings and traffic
 
 ![image](https://github.com/Forevermorewon/-azure-network-protocols/assets/145600604/6fafe071-a728-406f-af47-b6104bf8ea79)
 
@@ -169,7 +175,7 @@ WireShark also confirms the pings and traffic
 
 
 
-Stop the ping with ctrl + c
+          Stop the ping with ctrl + c
 
 ![image](https://github.com/Forevermorewon/-azure-network-protocols/assets/145600604/8b569221-175d-4118-bd6d-700f04c86304)
 
@@ -181,19 +187,81 @@ Stop the ping with ctrl + c
 
 
 
+**SSH Network Traffic**
+
+          Filter WireShark for SSH traffic
+
+![image](https://github.com/Forevermorewon/-azure-network-protocols/assets/145600604/3e33d73d-c2b3-4526-ad98-267a25357f2f)
 
 
 
 
 
-</p>
-<br />
 
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+
+
+
+
+
+
+            Remote login to VM1 from VM2 via Power Shell using command ssh "username"@(Private IP address)
+            Now we are logged into VM2 through remote log in and Using Linux OS
+
+
+![image](https://github.com/Forevermorewon/-azure-network-protocols/assets/145600604/de2a41f1-9c64-4114-a0aa-775527a195bc)
+
+
+
+
+
+
+
+
+
+            Wireshark begins caturing SSH packets
+          
+![image](https://github.com/Forevermorewon/-azure-network-protocols/assets/145600604/6220b635-fb04-413c-9b54-5a35910d46fd)
+
+
+
+
+
+
+
+
+
+
+
+
+            We can now exit and we will be back to VM2 windows OS.
+
+![image](https://github.com/Forevermorewon/-azure-network-protocols/assets/145600604/88f1f678-8e87-4fd5-9e25-092d3811fbf8)
+
+
+
+
+
+
+
+
+            In Wireshark we can filter through the port using command tcp.port==22 because ssh uses the port for secure traffic.
+            And once again simply type exit to return to VM2. 
+
+
+
+
+
+![image](https://github.com/Forevermorewon/-azure-network-protocols/assets/145600604/762df169-e71b-4497-8a88-c27e504df2c9)
+
+
+
+
+            
+
+**DHCP Traffic**
+
+
+
 </p>
 <br />
 
