@@ -72,7 +72,9 @@ be working with each of these with command line tools.
 
 **Firewall and ICMP Protocol**
 
-        Next we will use the powershell command ping -t to establish a continuous ping with VM1, while we disable firewall traffic from ICMP protocol.
+        
+        Next we will use the powershell command ping -t to establish a continuous ping with VM1, while we disable firewall 
+        traffic from ICMP protocol.
 
 
 ![image](https://github.com/Forevermorewon/-azure-network-protocols/assets/145600604/e3b1c00b-80ee-4115-a569-603d85d55802)
@@ -88,8 +90,9 @@ be working with each of these with command line tools.
 
 
 
-        Create a new rule to Deny ICMP protocol traffic, but navigating to Azure.  Select the Network security group for machine 2.  Go to inbound 
-        security rules.  Choose +add and create new rule.  Note that the Priority number will determin the order in which actions are taken.
+        Create a new rule to Deny ICMP protocol traffic, by navigating to Azure.  Select the Network security group
+        for machine 2.  Go to inbound security rules.  Choose +add and create new rule. 
+        Note that the Priority number will determin the order in which actions are taken.
 
 
 ![image](https://github.com/Forevermorewon/-azure-network-protocols/assets/145600604/3e1b0d5a-646c-469c-8cd6-76bb54624b0e)
@@ -258,17 +261,54 @@ be working with each of these with command line tools.
 
             
 
-**DHCP Traffic**
+**DHCP and DNS Traffic**
+
+        Now we will ananlyze DHCP traffic by forcing a renewal of our ip address with the command ipconfig /renew.
+        DHCP traffic occurs on our filter through WireShark.
+
+
+![image](https://github.com/Forevermorewon/-azure-network-protocols/assets/145600604/94219aba-7777-4445-89cf-e6767fa76316)
 
 
 
-</p>
-<br />
 
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
+
+
+
+        Now we will observe DNS traffic through WireShark.  We will use commmand nslookup and view various website.
+
+
+![image](https://github.com/Forevermorewon/-azure-network-protocols/assets/145600604/70a6ae11-c03a-4341-8e48-bd324a9b8c76)
+
+
+
+
+
+
+
+
+
+
+        As before we will use a port to monitor traffic related to DNS.  udp.port==53
+
+
+
+![image](https://github.com/Forevermorewon/-azure-network-protocols/assets/145600604/db270819-7efd-4176-93c9-27310f8bfe3f)
+
+
+
+
+
+
+
+
+
+
+        Now we will observe RDP traffic through port  3389 using tcp.port==3389.  Remote desktop uses port 3389 by default.
+
+![image](https://github.com/Forevermorewon/-azure-network-protocols/assets/145600604/a2c6a9d6-233e-4bc0-a559-4f37e3cdb570)
+
+
+
+
+
