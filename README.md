@@ -83,7 +83,7 @@ Next we will use the powershell command ping -t to establish a continuous ping w
 
 
 Create a new rule to Deny ICMP protocol traffic, but navigating to Azure.  Select the Network security group for machine 2.  Go to inbound 
-security rules.  Choose +add and create new rule.
+security rules.  Choose +add and create new rule.  Note that the Priority number will determin the order in which actions are taken.
 
 
 ![image](https://github.com/Forevermorewon/-azure-network-protocols/assets/145600604/3e1b0d5a-646c-469c-8cd6-76bb54624b0e)
@@ -160,6 +160,22 @@ You will notice the trafiic begain on the command line of powershell
 WireShark also confirms the pings and traffic
 
 ![image](https://github.com/Forevermorewon/-azure-network-protocols/assets/145600604/6fafe071-a728-406f-af47-b6104bf8ea79)
+
+
+
+
+
+
+
+
+
+Stop the ping with ctrl + c
+
+![image](https://github.com/Forevermorewon/-azure-network-protocols/assets/145600604/8b569221-175d-4118-bd6d-700f04c86304)
+
+
+
+
 
 
 
